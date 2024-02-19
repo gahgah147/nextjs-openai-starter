@@ -23,7 +23,7 @@ export default function Home() {
                 {user.email} 
               </div>
             </div>
-            <Link href="/api/auth/loggout">Loggout</Link>
+            <Link href="/api/auth/logout">Logout</Link>
           </>
         ):<Link href="/api/auth/login">Login</Link>}
       </div>
