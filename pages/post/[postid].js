@@ -44,7 +44,6 @@ Post.getLayout = function getLayout(page,pageProps){
     return <AppLayout {...pageProps}>{page}</AppLayout>
 }
 
-
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(ctx){
         const userSession = await getSession(ctx.req,ctx.res);
@@ -73,6 +72,7 @@ export const getServerSideProps = withPageAuthRequired({
                 title: post.title,
                 metaDescription: post.metaDescription,
                 keywords: post.keywords,
+                ...props,
             }
         }
     }
