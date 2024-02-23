@@ -3,16 +3,19 @@ import { AppLayout } from "../components/AppLayout";
 import { getAppProps } from "../utils/getAppProps";
 export default function TokenTopup(){
     const handleClick = async() =>{
-        await fetch(`/api/addTokens`,{
+        const result = await fetch(`/api/addTokens`,{
             method: 'POST',
         });
+        const json = await result.json();
+        console.log('RESULT: ',json);
+        window.location.href = json.session.url;
     };
     return (
         <div>
-            <h1>
-                this is the Token Topup
-                <button className="btn" onClick={handleClick}>ADD TOKENS</button>
-            </h1>
+            <h1>this is the token topup</h1>
+            <button className="btn" onClick={handleClick}>
+                Add tokens
+            </button>
         </div>
     )
 }
