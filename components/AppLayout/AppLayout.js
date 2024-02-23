@@ -4,8 +4,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import {Logo} from '../Logo';
-export const AppLayout = ({ children, availableTokens,posts ,postId}) => {
+import { useContext, useEffect } from 'react';
+import PostsContext from '../../context/postsContenxt';
+export const AppLayout = ({ 
+    children, 
+    availableTokens,
+    posts: postsFromSSR,
+    postId,
+}) => 
+{
     const {user} = useUser();
+
+    const { setPostsFromSSR, posts } = useContext(PostsContext);
+
+    useEffect(()=>{
+        setPostsFromSSR(postsFromSSR);
+    },[postsFromSSR,setPostsFromSSR]);
+
     return (
         <div className="grid grid-cols-[300px_1fr] h-screen max-h-screen">
             <div className="flex flex-col text-white overflow-hidden">
@@ -25,6 +40,9 @@ export const AppLayout = ({ children, availableTokens,posts ,postId}) => {
                             {post.topic}
                         </Link>
                     ))}
+                    <div className='hover:underline text-sm text-slate-400 text-center cursor-pointer mt-4'>
+                        Load more posts
+                    </div>
                 </div>
                 <div className="bg-cyan-800 flex items-center gap-2 border-t border-black/50 h-20 px-2">
                     { !!user ? (
