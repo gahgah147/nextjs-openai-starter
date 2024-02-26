@@ -9,28 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^2.2.1",
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
-    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@auth0/nextjs-auth0": "^3.5.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@next/font": "^13.1.6",
+    "@next/font": "^14.1.0",
     "@webdeveducation/next-verify-stripe": "^1.0.1",
     "micro-cors": "^0.1.1",
-    "mongodb": "^4.13.0",
-    "next": "13.1.6",
+    "mongodb": "^6.3.0",
+    "next": "14.1.0",
     "numeral": "^2.0.6",
-    "openai": "^3.2.1",
+    "openai": "^4.28.0",
+    "openid-client": "^5.6.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^9.0.1",
-    "sharp": "^0.32.1",
-    "stripe": "^11.8.0"
+    "sharp": "^0.33.2",
+    "stripe": "^14.18.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
-    "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.4"
+    "autoprefixer": "^10.4.17",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
   }
 }
