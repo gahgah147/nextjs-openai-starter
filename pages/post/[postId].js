@@ -6,7 +6,7 @@ import Markdown from "react-markdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PostsContext from "../../context/postsContenxt";
 export default function Post(props) {
 
@@ -60,26 +60,28 @@ export default function Post(props) {
                 <div className="text-sm font-bold mt-6 p-2 bg-stone-200 rounded-sm">
                     Blog post
                 </div>
-            </div>
-            <div dangerouslySetInnerHTML={{__html:props.postContent || ''}}/>
-            {/* <Markdown>
-                {props.postContent || ""}
-            </Markdown> */}
-            <div className="my-4">
-                {!showDeleteConfirm && (
-                    <buttom className="btn bg-red-600 hover:bg-red-700" onClick={()=> setShowDeleteConfirm(true)}>
-                        Delete post
-                    </buttom>
-                )}
-                {!!showDeleteConfirm && (
-                    <div className="p-2 bg-red-300 text-center">
-                        <p>Are you sure you want to delete this post? This action is irreversible</p>
-                        <div className="grid grid-cols-2">
-                            <button onClick={() => setShowDeleteConfirm(false)} className="btn bg-stone-600 hover:bg-stone-700">cancel</button>
-                            <button onClick={handleDeleteConfirm} className="btn bg-red-600 hover:bg-red-700">confirm delete</button>
+
+                 {/* <div dangerouslySetInnerHTML={{__html:props.postContent || ''}}/> */}
+                <Markdown>
+                    {props.postContent || ""}
+                </Markdown>
+
+                <div className="my-4">
+                    {!showDeleteConfirm && (
+                        <buttom className="btn bg-red-600 hover:bg-red-700" onClick={()=> setShowDeleteConfirm(true)}>
+                            Delete post
+                        </buttom>
+                    )}
+                    {!!showDeleteConfirm && (
+                        <div className="p-2 bg-red-300 text-center">
+                            <p>Are you sure you want to delete this post? This action is irreversible</p>
+                            <div className="grid grid-cols-2">
+                                <button onClick={() => setShowDeleteConfirm(false)} className="btn bg-stone-600 hover:bg-stone-700">cancel</button>
+                                <button onClick={handleDeleteConfirm} className="btn bg-red-600 hover:bg-red-700">confirm delete</button>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
         </div >
     );
@@ -102,6 +104,8 @@ export const getServerSideProps = withPageAuthRequired({
             userId: user._id
         })
 
+        console.log(post);
+
         if(!post){
             return {
                 redirect:{
@@ -119,7 +123,7 @@ export const getServerSideProps = withPageAuthRequired({
                 metaDescription: post.metaDescription,
                 keywords: post.keywords,
                 postCreated: post.created.toString(),
-                ...props,
+                // ...props,
             }
         }
     }
