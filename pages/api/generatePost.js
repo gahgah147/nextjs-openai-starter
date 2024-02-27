@@ -16,7 +16,7 @@ export default withApiAuthRequired(async function handler(req, res) {
     return;
   }
 
-  const config= new Configuration({
+  const config = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
   })
   
